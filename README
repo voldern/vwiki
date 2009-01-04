@@ -1,0 +1,2 @@
+This is a small wiki written in Ruby using git as the backend for storing the pages.
+Its using Ramaze as the web framework.
