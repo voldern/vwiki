@@ -38,30 +38,35 @@ describe Wiki, ' a new wiki page' do
 		page = Fixtures::generate_page
 
 		page.save.should eql(Fixtures::Data)
+		page.save!.should eql(Fixtures::Data)
 	end
 
 	it "should not be able to save with empty date" do
 		page = Fixtures::generate_page_without :date
 
 		page.save.should eql(false)
+		lambda { page.save! }.should raise_error(ArgumentError, /^date/)
 	end
 
 	it "should not be able to save with empty name" do
 		page = Fixtures::generate_page_without :name
 
 		page.save.should eql(false)
+		lambda { page.save! }.should raise_error(ArgumentError, /^name/)
 	end
 
 	it "should not be able to save with empty author" do
 		page = Fixtures::generate_page_without :author
 
 		page.save.should eql(false)
+		lambda { page.save! }.should raise_error(ArgumentError, /^author/)
 	end
 
 	it "should not be able to save with empty body" do
 		page = Fixtures::generate_page_without :body
 
 		page.save.should eql(false)
+		lambda { page.save! }.should raise_error(ArgumentError, /^body/)
 	end
 
 	after(:each) do
