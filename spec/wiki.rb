@@ -9,7 +9,7 @@ module Fixtures
 		'body' => 'Lorem ipsum' }
 
 	def self.generate_page(data = nil)
-		data = Data if data.nil?
+		data = Data.clone if data.nil?
 
 		page = Wiki::Page.new('test')
 		data.each do |name, data|
@@ -20,7 +20,7 @@ module Fixtures
 	end
 
 	def self.generate_page_without(name, data = nil)
-		data = Data if data.nil?
+		data = Data.clone if data.nil?
 		data.delete(name.to_s)
 
 		generate_page(data)
