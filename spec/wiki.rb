@@ -51,7 +51,7 @@ describe Wiki, ' a new wiki page' do
 
 		page.save.should eql(false)
 	end
-	
+
 	it "should not be able to save with empty author" do
 		page = Fixtures::generate_page_without :author
 
