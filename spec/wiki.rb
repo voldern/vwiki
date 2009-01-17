@@ -13,7 +13,7 @@ module Fixtures
 
 		page = Wiki::Page.new('test')
 		data.each do |name, data|
-			eval("page.#{name} = '#{data}'")
+			page.method("#{name}=").call(data)
 		end
 
 		page
