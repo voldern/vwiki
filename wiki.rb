@@ -23,27 +23,35 @@ module Wiki
 		# Commit the data
 		# Returns false when it cannot save
 		def save
-			# Check if any of the require fields are empty
-			[ :date, :name, :author, :body ].each do |name|
-				if self.send(name).nil? || self.send(name).empty?
-					return false
-				end
-			end
-
-			@store["pages/#{@page_name}.yml"] = { 'date' => self.date,
-				'name' => self.name, 'author' => self.author, 'body' => self.body }
+			validate { return false }
+			store
 		end
 
 		# Raises an exception when it cannot save
 		# TODO: Remove the duplication in this and the save function
 		def save!
+			validate { |name| raise ArgumentError, "#{name} cannot be empty" }
+			store
+		end
+
+		private
+
+		# If block is given it will be executed if one of the fields is missing
+		def validate
 			# Check if any of the require fields are empty
 			[ :date, :name, :author, :body ].each do |name|
 				if self.send(name).nil? || self.send(name).empty?
-					raise ArgumentError, "#{name} cannot be empty"
+					if block_given?
+						yield(name)
+					else
+						return false
+					end
 				end
 			end
+		end
 
+		# Stores the page
+		def store
 			@store["pages/#{@page_name}.yml"] = { 'date' => self.date,
 				'name' => self.name, 'author' => self.author, 'body' => self.body }
 		end
