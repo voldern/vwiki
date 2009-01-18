@@ -74,3 +74,23 @@ describe Wiki, ' a new wiki page' do
 		FileUtils.rm_rf('test_git')
 	end
 end
+
+describe Wiki, ' load and edit a wiki page' do
+	before(:each) do
+		# Create the test directory
+		Dir.mkdir('test_git')
+		`cd test_git && git init`
+		page = Fixtures::generate_page
+		page.save!
+	end
+
+	it "should be possible to load an existing page"
+	it "should not be possible to load unexisting page"
+	it "should be possible to edit one of the fields and save"
+	it "should not be possible to save if we set one of the fields empty"
+
+	after(:each) do
+		# Clean up
+		FileUtils.rm_rf('test_git')
+	end
+end
