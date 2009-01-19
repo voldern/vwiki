@@ -10,5 +10,5 @@ end
 
 desc "Run all examples"
 Spec::Rake::SpecTask.new('examples') do |t|
-  t.spec_files = FileList['spec/*.rb']
+  t.spec_files = FileList['spec/wiki.rb']
 end
