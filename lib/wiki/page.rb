@@ -38,7 +38,8 @@ module Wiki
 		def validate
 			# Check if any of the require fields are empty
 			[ :date, :name, :author, :body ].each do |name|
-				if self.send(name).nil? || self.send(name).empty?
+				name_content = self.send(name)
+				if name_content.nil? || name_content.empty?
 					yield(name)
 				end
 			end
