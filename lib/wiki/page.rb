@@ -34,16 +34,12 @@ module Wiki
 
 		private
 
-		# If block is given it will be executed if one of the fields is missing
+		# Executes block in case of failiure
 		def validate
 			# Check if any of the require fields are empty
 			[ :date, :name, :author, :body ].each do |name|
 				if self.send(name).nil? || self.send(name).empty?
-					if block_given?
-						yield(name)
-					else
-						return false
-					end
+					yield
 				end
 			end
 		end
