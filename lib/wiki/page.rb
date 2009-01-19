@@ -39,7 +39,7 @@ module Wiki
 			# Check if any of the require fields are empty
 			[ :date, :name, :author, :body ].each do |name|
 				if self.send(name).nil? || self.send(name).empty?
-					yield
+					yield(name)
 				end
 			end
 		end
