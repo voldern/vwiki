@@ -39,8 +39,8 @@ describe Wiki, ' a new wiki page' do
 	it "should be possible to save a valid page" do
 		page = Fixtures::generate_page
 
-		page.save.should eql(Fixtures::Data)
-		page.save!.should eql(Fixtures::Data)
+		page.save.should == Fixtures::Data
+		page.save!.should == Fixtures::Data
 	end
 
 	it "should not be able to save with empty date" do
