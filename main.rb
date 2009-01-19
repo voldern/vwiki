@@ -5,7 +5,7 @@ require 'lib/wiki'
 
 class MainController < Ramaze::Controller
 	def index
-		"Hello World"
+		"Hello World!"
 	end
 end
 
