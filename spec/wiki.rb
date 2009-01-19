@@ -2,7 +2,8 @@ require 'fileutils'
 require 'grit'
 require 'git_store'
 
-require '../wiki'
+$:.unshift(File.dirname(__FILE__) + '/../') 
+require 'lib/wiki'
 
 module Fixtures
 	Data = { 'date' => '2008-12-10', 'name' => 'Test', 'author' => 'voldern',
