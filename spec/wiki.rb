@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'fileutils'
 require 'grit'
 require 'git_store'
