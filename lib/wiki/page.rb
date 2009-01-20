@@ -58,10 +58,10 @@ module Wiki
 			msg = "Updated by #{author}" if msg.nil?
 			sha1 = @store.commit(msg)
 
-			if sha1.nil? or sha1.empty?
+			if sha1.nil?
 				false
 			else
-				page
+				@store["pages/#{@page_name}.yml"]
 			end
 		end
 
@@ -70,7 +70,7 @@ module Wiki
 			puts "Loading data"
 			page = @store["pages/#{@page_name}.yml"]
 			[ :date, :name, :author, :body ].each do |name|
-				self.send("#{name}=", page[name.to_s])
+				self.send("#{name}=", page[name])
 			end
 		end
 
