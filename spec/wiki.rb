@@ -13,7 +13,7 @@ module Fixtures
 	def self.generate_page(data = nil)
 		data = Data if data.nil?
 
-		page = Wiki::Page.new('test')
+		page = Wiki::Page.new('test', 'test_git')
 		data.each do |name, data|
 			page.method("#{name}=").call(data)
 		end
