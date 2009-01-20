@@ -7,11 +7,11 @@ $:.unshift(File.dirname(__FILE__) + '/../')
 require 'lib/wiki'
 
 module Fixtures
-	Data = { 'date' => '2008-12-10', 'name' => 'Test', 'author' => 'voldern',
-		'body' => 'Lorem ipsum' }
+	Data = { :date => '2008-12-10', :name => 'Test', :author => 'voldern',
+		:body => 'Lorem ipsum' }
 
 	def self.generate_page(data = nil)
-		data = Data.clone if data.nil?
+		data = Data if data.nil?
 
 		page = Wiki::Page.new('test')
 		data.each do |name, data|
