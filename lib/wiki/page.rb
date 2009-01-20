@@ -51,7 +51,11 @@ module Wiki
 		def store(msg = nil)
 			author = self.author # No need to call self.author twice
 
-			msg = "Updated by #{self.author}" if msg.nil?
+			@store["pages/#{@page_name}.yml"] = { :date => self.date, :name => self.name, 
+				:author => author, :body => self.body }
+
+			# Commit the changes
+			msg = "Updated by #{author}" if msg.nil?
 			sha1 = @store.commit(msg)
 
 			if sha1.nil? or sha1.empty?
