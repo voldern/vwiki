@@ -23,7 +23,7 @@ module Fixtures
 
 	def self.generate_page_without(name, data = nil)
 		data = Data.clone if data.nil?
-		data.delete(name.to_s)
+		data.delete(name)
 
 		generate_page(data)
 	end
