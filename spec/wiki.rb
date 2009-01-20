@@ -29,7 +29,7 @@ module Fixtures
 	end
 end
 
-describe Wiki, ' a new wiki page' do
+describe Wiki, 'page' do
 	before(:each) do
 		# Create the test directory
 		Dir.mkdir('test_git')
@@ -82,11 +82,18 @@ describe Wiki, ' load and edit a wiki page' do
 		# Create the test directory
 		Dir.mkdir('test_git')
 		`cd test_git && git init`
-		page = Fixtures::generate_page
-		page.save!
+		@page = Fixtures::generate_page
+		@page.save!
 	end
 
-	it "should be possible to load an existing page"
+	it "should be possible to load an existing page" do
+		page = Wiki::Page.new('test')
+		page.date.should eql(Fixtures::Data['date'])
+		page.name.should eql(Fixtures::Data['name'])
+		page.author.should eql(Fixtures::Data['author'])
+		page.body.should eql(Fixtures::Data['body'])
+	end
+
 	it "should not be possible to load unexisting page"
 	it "should be possible to edit one of the fields and save"
 	it "should not be possible to save if we set one of the fields empty"

@@ -8,14 +8,14 @@ module Wiki
 		def initialize(name, repo = 'store')
 			@page_name = name 
 			@store = GitStore.new(repo)
+			
+			# Check if this page exists. If it does load the data from it into the object
+			page = @store["pages/#{@page_name}.yml"]
+			load_data if not page.nil? and not page.empty?
 		end
 
 		# List all the previous commits, the default limit is 10 commits 
 		def history(limit = 10)
-		end
-
-		# Load a specific revision
-		def load(rev)
 		end
 
 		# Commit the data
@@ -62,5 +62,15 @@ module Wiki
 				page
 			end
 		end
+
+		# Load data into object
+		def load_data
+			puts "Loading data"
+			page = @store["pages/#{@page_name}.yml"]
+			[ :date, :name, :author, :body ].each do |name|
+				self.send("#{name}=", page[name.to_s])
+			end
+		end
+
 	end
 end
