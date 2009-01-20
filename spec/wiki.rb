@@ -87,7 +87,7 @@ describe Wiki, ' load and edit a wiki page' do
 	end
 
 	it "should be possible to load an existing page" do
-		loaded_page = Wiki::Page.new('test')
+		loaded_page = Wiki::Page.new('test', 'test_git')
 		loaded_page.date.should eql(Fixtures::Data[:date])
 		loaded_page.name.should eql(Fixtures::Data[:name])
 		loaded_page.author.should eql(Fixtures::Data[:author])
