@@ -87,11 +87,11 @@ describe Wiki, ' load and edit a wiki page' do
 	end
 
 	it "should be possible to load an existing page" do
-		page = Wiki::Page.new('test')
-		page.date.should eql(Fixtures::Data['date'])
-		page.name.should eql(Fixtures::Data['name'])
-		page.author.should eql(Fixtures::Data['author'])
-		page.body.should eql(Fixtures::Data['body'])
+		loaded_page = Wiki::Page.new('test')
+		loaded_page.date.should eql(Fixtures::Data[:date])
+		loaded_page.name.should eql(Fixtures::Data[:name])
+		loaded_page.author.should eql(Fixtures::Data[:author])
+		loaded_page.body.should eql(Fixtures::Data[:body])
 	end
 
 	it "should not be possible to load unexisting page"
