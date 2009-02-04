@@ -11,7 +11,7 @@ module Wiki
 			
 			# Check if this page exists. If it does load the data from it into the object
 			page = @store["pages/#{@page_name}.yml"]
-			load_data if not page.nil? and not page.empty?
+			load_data unless page.nil?
 		end
 
 		# List all the previous commits, the default limit is 10 commits 
