@@ -2,6 +2,7 @@ require 'rubygems'
 require 'ramaze'
 require 'rdiscount' # Markdown
 require 'lib/wiki'
+require 'compass'
 
 class MainController < Ramaze::Controller
 	engine :Haml
@@ -25,6 +26,11 @@ class MainController < Ramaze::Controller
 	def view(page)
 	end
 
+end
+
+class CSSController < Ramaze::Controller
+	engine :Sass
+	trait[:sass_options] = {:load_paths => Compass::Frameworks::ALL.map{|f| f.stylesheets_directory}}
 end
 
 Ramaze.start
