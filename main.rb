@@ -31,6 +31,18 @@ end
 class CSSController < Ramaze::Controller
 	engine :Sass
 	trait[:sass_options] = {:load_paths => Compass::Frameworks::ALL.map{|f| f.stylesheets_directory}}
+
+	helper :aspect
+	before_all do
+		response['Content-Type'] = 'text/css'
+		nil
+	end
+
+	define_method('main.css') do
+	end
+
+	#helper :cache
+	#cache 'main.css'
 end
 
 Ramaze.start
