@@ -1,1 +1,13 @@
 %h2 New page
+
+%form{ :method => "POST", :action => Rs(:new) }
+  %label Name: 
+  %input{ :type => 'text', :name => :name }/
+    
+  %label Author: 
+  %input{ :type => 'text', :name => 'author' }/
+
+  %label Body:
+  %textarea{ :name => 'body', :rows => 10, :cols => 50 }
+
+  %input{ :type => 'submit', :value => 'Create' }

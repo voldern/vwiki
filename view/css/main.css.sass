@@ -4,16 +4,33 @@
 +blueprint-typography
 
 body
+  +reset-table
   .container
     +container
 
 h1
-  :margin 10px 0 10px 0
+  :margin-top 0.5em
 h2
   :margin-top 0
 
 ul, li
   +reset
+
+form
+  label
+    :float left
+    :clear left
+    :width 50px
+  input
+    :float left
+    :clear right
+  textarea
+    :float left
+    :clear both
+  input[type=submit]
+    :float left
+    :clear both
+    :margin-top 5px
 
 #header
   +column(24)
