@@ -6,6 +6,7 @@ require 'compass'
 
 class MainController < Ramaze::Controller
 	engine :Haml
+	layout :layout
 
 	def index
 		@page = Wiki::Page.new('index')

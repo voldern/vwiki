@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %link{ :rel => "stylesheet", :href => "/css/main.css", :type => "text/css", :media => "screen"}
+    %title VWiki
+  %body
+    .container
+      #header
+        %h1	VWiki 
+      #left_bar
+        %ul
+          %li= A('New page', :href => Rs(:new))
+          %li= A('#', 'Latest edits')
+          %li= A('#', 'Latest created pages')
+          %li= A('#', 'Random page')
+      #content
+        = @content
