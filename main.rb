@@ -29,6 +29,11 @@ class MainController < Ramaze::Controller
 
 end
 
+class StatsController < Ramaze::Controller
+	engine :Haml
+	layout :layout
+end
+
 class CSSController < Ramaze::Controller
 	engine :Sass
 	trait[:sass_options] = {:load_paths => Compass::Frameworks::ALL.map{|f| f.stylesheets_directory}}
