@@ -13,10 +13,7 @@ module Fixtures
   def self.generate_page(data = nil)
     data = Data if data.nil?
 
-    page = Wiki::Page.new('test', :store => 'test_git')
-    data.each do |name, data|
-      page.method("#{name}=").call(data)
-    end
+    page = Wiki::Page.new('test', data.merge({:store => 'test_git'}))
 
     page
   end
