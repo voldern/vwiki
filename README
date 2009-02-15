@@ -1,7 +1,7 @@
-This is a small wiki written in Ruby using git as the backend for storing the pages.
-Its using Ramaze as the web framework.
+This is a small wiki written in Ruby using Git as the backedn for storing the pages,
+showing diffs and etc.
 
-Require gems:
+Required gems:
 ramaze
 mojombo-grit (github)
 georgi-git_store (github)
