@@ -65,13 +65,11 @@ module Wiki
     # Return a hash with the page content if save succeded.
     # If not it will return false
     def store(msg = nil)
-      author = self.author # No need to call self.author twice
-
       @store["pages/#{@page_name}.yml"] = { :date => self.date, :name => self.name,
-        :author => author, :body => self.body }
+        :author => self.author, :body => self.body }
 
       # Commit the changes
-      msg = "Updated by #{author}" if msg.nil?
+      msg = "#{self.page} updated by #{self.author}" if msg.nil?
       sha1 = @store.commit(msg)
 
       if sha1.nil?
