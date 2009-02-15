@@ -1,0 +1,10 @@
+%h2 New page
+
+%form{ :method => "POST", :action => Rs(:edit, @page.name) }
+  %label Author: 
+  %input{ :type => 'text', :name => 'author', :value => @page.author }/
+
+  %label Body:
+  %textarea{ :name => 'body', :rows => 10, :cols => 50 }= @page.body
+
+  %input{ :type => 'submit', :value => 'Create' }

@@ -5,18 +5,23 @@ module Wiki
 
     # Initialize a page with name "name" and store it in folder "repo"
     # repo defaults to 'store'
-    def initialize(name, args)
-      repo = (args[:repo].nil? ? 'store' : args[:repo])
-
+    def initialize(name, args = {})
       # Loop over the args and set the attributes if they exist
-      args.each do |key,val|
-        self.send("#{key}=", val) if respond_to? "#{key}="
+      if not args.nil? and not args.empty?
+        repo = (args[:repo].nil? ? 'store' : args[:repo])
+        args.each do |key,val|
+          self.send("#{key}=", val) if respond_to? "#{key}="
+        end
+      else
+        repo = 'store'
       end
 
       @page_name = name
       @store = GitStore.new(repo)
 
-      # Check if this page exists. If it does load the data from it into the object
+      # Check if this page exists. If it does load the data from it
+      # into the object
+      @loaded = false
       page = @store["pages/#{@page_name}.yml"]
       load_data unless page.nil?
     end
@@ -37,6 +42,10 @@ module Wiki
     def save!
       validate { |name| raise ArgumentError, "#{name} cannot be empty" }
       store
+    end
+
+    def loaded?
+      @loaded
     end
 
     private
@@ -79,6 +88,7 @@ module Wiki
       [ :date, :name, :author, :body ].each do |name|
         self.send("#{name}=", page[name])
       end
+      @loaded = true
     end
 
   end
