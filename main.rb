@@ -9,10 +9,10 @@ class MainController < Ramaze::Controller
   layout :layout
 
   def index
-    @page = Wiki::Page.new('Index')
+    redirect Rs(:show, 'Index')
   end
 
-  def new
+  def new(name = nil)
     if request.post?
       @page = Wiki::Page.new(request[:name], :name => request[:name],
                              :date => Time.now,
@@ -23,6 +23,8 @@ class MainController < Ramaze::Controller
       else
         @error = "Could not save page!"
       end
+    else
+      @name = (name.nil? ? '' : name)
     end
   end
 
@@ -42,7 +44,7 @@ class MainController < Ramaze::Controller
 
   def show(page)
     @page = Wiki::Page.new(page)
-    redirect Rs(:new) unless @page.loaded?
+    redirect Rs(:new, page) unless @page.loaded?
   end
 
 end
