@@ -69,7 +69,7 @@ module Wiki
         :author => self.author, :body => self.body }
 
       # Commit the changes
-      msg = "#{self.page} updated by #{self.author}" if msg.nil?
+      msg = "#{self.name} updated by #{self.author}" if msg.nil?
       sha1 = @store.commit(msg)
 
       if sha1.nil?
