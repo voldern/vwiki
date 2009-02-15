@@ -1,4 +1,4 @@
-This is a small wiki written in Ruby using Git as the backedn for storing the pages,
+This is a small wiki written in Ruby that uses Git as the backend for storing the pages,
 showing diffs and etc.
 
 Required gems:
