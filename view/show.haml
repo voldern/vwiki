@@ -1,3 +1,6 @@
 %h2= @page.name
-#info== By #{@page.author} on #{@page.date}  
+#info
+  == By #{@page.author} on #{@page.date} 
+  = A('Edit', :href => Rs(:edit, @page.name))
+
 %p= RDiscount.new(@page.body).to_html
