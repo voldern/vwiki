@@ -46,7 +46,7 @@ class MainController < Ramaze::Controller
 
   def edit(page)
     @page = Wiki::Page.new(page)
-    redirect Rs(:new) unless @page.loaded?
+    redirect Rs(:new, page) unless @page.loaded?
 
     if request.post?
       @page.author = request[:author]
